@@ -18,7 +18,9 @@ useEffect(() =>{
         id: movie._id,
         title: movie.Title,
         image :movie.ImagePath,
-        director: movie.Director.Name
+        director: movie.Director,
+        genre: movie.Genre
+        // Popuate the rest data (e.g. Genre, etc.)
       };
     });
 
