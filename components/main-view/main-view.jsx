@@ -37,6 +37,7 @@ useEffect(() => {
     });
 }, [token]);
 
+// Index page
 if (!user) {
   return (
     <>
@@ -50,19 +51,11 @@ if (!user) {
       </>
   );
 }
-
+// MovieView Page
   if (selectedMovie) {
     return (
       <>
-      <button
-      onClick={() => {
-        setUser(null);
-        setToken(null);
-        localStorage.clear();
-      }}
-      >
-        Logout
-      </button>
+  
       <MovieView 
       movie={selectedMovie} 
       onBackClick={() => setSelectedMovie(null)} 
@@ -75,8 +68,10 @@ if (!user) {
     return <div>The list is empty!</div>;
   }
 
+  // default page
   return (
     <div>
+      
       {movies.map((movie) => (
         <MovieCard
           key={movie.id}
@@ -86,6 +81,16 @@ if (!user) {
           }}
         />
       ))}
+          <button
+      onClick={() => {
+        setUser(null);
+        setToken(null);
+        localStorage.clear();
+        location.reload();
+      }}
+      >
+        Logout
+      </button>
     </div>
   );
 };
