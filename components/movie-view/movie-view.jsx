@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import "./movie-view.scss";
 
+
 export const MovieView = ({ movie, onBackClick }) => {
   return (
     <div>
@@ -13,7 +14,7 @@ export const MovieView = ({ movie, onBackClick }) => {
       </div>
       <div>
         <span>Director: </span>
-        <span>{movie.director.Name}</span>
+        <span>{movie.director}</span>
       </div>
       <div>
         <span>Genre: </span>
