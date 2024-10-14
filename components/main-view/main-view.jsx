@@ -3,6 +3,8 @@ import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
+import Row from "react-bootstrap/Row";
+import Col from 'react-bootstrap/Col';
 
 export const MainView = () => {
   const [movies, setMovies] = useState([]);
@@ -37,10 +39,10 @@ useEffect(() => {
     });
 }, [token]);
 
-// Index page
-if (!user) {
-  return (
-    <>
+return(
+  <Row className="justify-content-md-center">
+    {!user ? ( 
+    <Col md={5}>
     <LoginView
       onLoggedIn={(user, token) => {
         setUser(user);
@@ -48,49 +50,43 @@ if (!user) {
       }} />
       or 
       <SignupView />
-      </>
-  );
-}
-// MovieView Page
-  if (selectedMovie) {
-    return (
-      <>
-  
+      </Col>
+  ) : selectedMovie ? (
+      <Col md={8} style={{ border: "1px solid black" }}>
       <MovieView 
-      movie={selectedMovie} 
-      onBackClick={() => setSelectedMovie(null)} 
+        style={{ border: "1px solid green" }}
+        movie={selectedMovie} 
+        onBackClick={() => setSelectedMovie(null)} 
       />
-    </>
-    );
-  }
-
-  if (movies.length === 0) {
-    return <div>The list is empty!</div>;
-  }
-
-  // default page
-  return (
-    <div>
+    </Col>
+    ) : movies.length === 0 ? (
+    <div>The list is empty!</div>
+    ) : (
+    <>
       
       {movies.map((movie) => (
         <MovieCard
-          key={movie._id}
+          key={movie.id}
           movie={movie}
           onMovieClick={(newSelectedMovie) => {
             setSelectedMovie(newSelectedMovie);
           }}
         />
       ))}
-          <button
-      onClick={() => {
-        setUser(null);
-        setToken(null);
-        localStorage.clear();
-        location.reload();
-      }}
+    </>
+    )}
+    {user && (
+      <button
+        onClick={() => {
+          setUser(null);
+          setToken(null);
+          localStorage.clear();
+          location.reload();
+        }}
       >
         Logout
       </button>
-    </div>
+    )}
+    </Row>
   );
 };
