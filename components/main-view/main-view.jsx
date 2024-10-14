@@ -48,11 +48,11 @@ return(
         setUser(user);
         setToken(token);
       }} />
-      or 
+      <center>or</center> 
       <SignupView />
       </Col>
   ) : selectedMovie ? (
-      <Col md={8} style={{ border: "1px solid black" }}>
+      <Col md={8} style={{ border: "1px solid black" }}> 
       <MovieView 
         style={{ border: "1px solid green" }}
         movie={selectedMovie} 
@@ -65,13 +65,14 @@ return(
     <>
       
       {movies.map((movie) => (
-        <MovieCard
-          key={movie.id}
-          movie={movie}
-          onMovieClick={(newSelectedMovie) => {
-            setSelectedMovie(newSelectedMovie);
-          }}
-        />
+        <Col className="mb-5" key={movie.id} md={3}>
+          <MovieCard
+            movie={movie}
+            onMovieClick={(newSelectedMovie) => {
+              setSelectedMovie(newSelectedMovie);
+            }}
+          />
+        </Col>
       ))}
     </>
     )}

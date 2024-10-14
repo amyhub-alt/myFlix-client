@@ -2,6 +2,8 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
+export const formStyle = { margin: "10px", border: "2px solid #d5d5d5", borderRadius: "10px", padding: "20px", boxShadow: "2px 2px #000000"};
+
 export const LoginView = ({ onLoggedIn }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -37,7 +39,7 @@ export const LoginView = ({ onLoggedIn }) => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit} style={{...formStyle}}>
     <Form.Group controlId="formUsername">
       <Form.Label>Username:</Form.Label>
       <Form.Control
