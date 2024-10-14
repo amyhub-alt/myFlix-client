@@ -26,7 +26,7 @@ useEffect(() => {
           id: movie._id,
           title: movie.Title,
           imagePath :movie.ImagePath,
-          director: movie.Director,
+          director: movie.Director.Name,
           genre: movie.Genre
         };
       });
