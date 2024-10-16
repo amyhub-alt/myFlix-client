@@ -7,6 +7,21 @@ import Row from "react-bootstrap/Row";
 import Col from 'react-bootstrap/Col';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
+const Movies = () => {   
+return movies.map((movie) => (
+        <Col className="mb-5" key={movie.id} md={3}>
+          <MovieCard
+            movie={movie}
+            onMovieClick={(newSelectedMovie) => {
+              setSelectedMovie(newSelectedMovie);
+            }}
+          />
+        </Col>
+    )) 
+  };
+  
+
+
 export const MainView = () => {
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
@@ -92,10 +107,13 @@ return(
   //   </Row>
   <BrowserRouter>
   <Routes>
-    <Route path="/login" element={<LoginView />} />
+    <Route path="/login" element={<LoginView onLoggedIn={(user, token) => {
+        setUser(user);
+        setToken(token);
+      }}/>} />
     <Route path="/signup" element={<SignupView />} />
-    <Route path="/:movieid" element={ <MovieView />} />
-    <Route path="/" />
+    {/* <Route path="/:movieid" element={ <MovieView />} /> */}
+    <Route path="/" element={user? <Movies movies={movies} />: <LoginView />} />
   </Routes>
   </BrowserRouter>
   );

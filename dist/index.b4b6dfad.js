@@ -27257,10 +27257,31 @@ var _col = require("react-bootstrap/Col");
 var _colDefault = parcelHelpers.interopDefault(_col);
 var _reactRouterDom = require("react-router-dom");
 var _s = $RefreshSig$();
+const Movies = ()=>{
+    return movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
+            className: "mb-5",
+            md: 3,
+            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
+                movie: movie,
+                onMovieClick: (newSelectedMovie)=>{
+                    setSelectedMovie(newSelectedMovie);
+                }
+            }, void 0, false, {
+                fileName: "components/main-view/main-view.jsx",
+                lineNumber: 13,
+                columnNumber: 11
+            }, undefined)
+        }, movie.id, false, {
+            fileName: "components/main-view/main-view.jsx",
+            lineNumber: 12,
+            columnNumber: 9
+        }, undefined));
+};
+_c = Movies;
 const MainView = ()=>{
     _s();
-    const [movies, setMovies] = (0, _react.useState)([]);
-    const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
+    const [movies1, setMovies] = (0, _react.useState)([]);
+    const [selectedMovie, setSelectedMovie1] = (0, _react.useState)(null);
     const [user, setUser] = (0, _react.useState)(null);
     const [token, setToken] = (0, _react.useState)(null);
     (0, _react.useEffect)(()=>{
@@ -27340,63 +27361,68 @@ const MainView = ()=>{
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
                     path: "/login",
-                    element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginView.LoginView), {}, void 0, false, {
+                    element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginView.LoginView), {
+                        onLoggedIn: (user, token)=>{
+                            setUser(user);
+                            setToken(token);
+                        }
+                    }, void 0, false, {
                         fileName: "components/main-view/main-view.jsx",
-                        lineNumber: 95,
+                        lineNumber: 110,
                         columnNumber: 35
                     }, void 0)
                 }, void 0, false, {
                     fileName: "components/main-view/main-view.jsx",
-                    lineNumber: 95,
+                    lineNumber: 110,
                     columnNumber: 5
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
                     path: "/signup",
                     element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _signupView.SignupView), {}, void 0, false, {
                         fileName: "components/main-view/main-view.jsx",
-                        lineNumber: 96,
+                        lineNumber: 114,
                         columnNumber: 36
                     }, void 0)
                 }, void 0, false, {
                     fileName: "components/main-view/main-view.jsx",
-                    lineNumber: 96,
+                    lineNumber: 114,
                     columnNumber: 5
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
-                    path: "/:movieid",
-                    element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {}, void 0, false, {
+                    path: "/",
+                    element: user ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Movies, {
+                        movies: movies1
+                    }, void 0, false, {
                         fileName: "components/main-view/main-view.jsx",
-                        lineNumber: 97,
-                        columnNumber: 39
+                        lineNumber: 116,
+                        columnNumber: 36
+                    }, void 0) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginView.LoginView), {}, void 0, false, {
+                        fileName: "components/main-view/main-view.jsx",
+                        lineNumber: 116,
+                        columnNumber: 64
                     }, void 0)
                 }, void 0, false, {
                     fileName: "components/main-view/main-view.jsx",
-                    lineNumber: 97,
-                    columnNumber: 5
-                }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
-                    path: "/"
-                }, void 0, false, {
-                    fileName: "components/main-view/main-view.jsx",
-                    lineNumber: 98,
+                    lineNumber: 116,
                     columnNumber: 5
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "components/main-view/main-view.jsx",
-            lineNumber: 94,
+            lineNumber: 109,
             columnNumber: 3
         }, undefined)
     }, void 0, false, {
         fileName: "components/main-view/main-view.jsx",
-        lineNumber: 93,
+        lineNumber: 108,
         columnNumber: 3
     }, undefined));
 };
 _s(MainView, "ld1mNqbzEgxPu9ZfASjBJ7ZrUMw=");
-_c = MainView;
-var _c;
-$RefreshReg$(_c, "MainView");
+_c1 = MainView;
+var _c, _c1;
+$RefreshReg$(_c, "Movies");
+$RefreshReg$(_c1, "MainView");
 
   $parcel$ReactRefreshHelpers$f6a9.postlude(module);
 } finally {
