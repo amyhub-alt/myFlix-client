@@ -9,18 +9,6 @@ import Col from 'react-bootstrap/Col';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { MoviesList } from "../movie-list/movie-list";
 
-// const MoviesList = ({movies})=> (
-//   movies.map((movie) => (
-//     <Col className="mb-5" key={movie.id} md={3}>
-//       <MovieCard
-//         movie={movie}
-//         onMovieClick={(newSelectedMovie) => {
-//           setSelectedMovie(newSelectedMovie);
-//         }}
-//       />
-//     </Col>
-// ))) 
-
 export const MainView = () => {
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
@@ -55,62 +43,13 @@ useEffect(() => {
 }, [token]);
 
 return(
-  // <Row className="justify-content-md-center">
-  //   {!user ? ( 
-  //   <Col md={5}>
-  //   <LoginView
-  //     onLoggedIn={(user, token) => {
-  //       setUser(user);
-  //       setToken(token);
-  //     }} />
-  //     <center>or</center> 
-  //     <SignupView />
-  //     </Col>
-  // ) : selectedMovie ? (
-  //     <Col md={8} style={{ border: "1px solid black" }}> 
-  //     <MovieView 
-  //       style={{ border: "1px solid green" }}
-  //       movie={selectedMovie} 
-  //       onBackClick={() => setSelectedMovie(null)} 
-  //     />
-  //   </Col>
-  //   ) : movies.length === 0 ? (
-  //   <div>The list is empty!</div>
-  //   ) : (
-  //   <>
-      
-  //     {movies.map((movie) => (
-  //       <Col className="mb-5" key={movie.id} md={3}>
-  //         <MovieCard
-  //           movie={movie}
-  //           onMovieClick={(newSelectedMovie) => {
-  //             setSelectedMovie(newSelectedMovie);
-  //           }}
-  //         />
-  //       </Col>
-  //     ))}
-  //   </>
-  //   )}
-  //   {user && (
-  //     <button
-  //       onClick={() => {
-  //         setUser(null);
-  //         setToken(null);
-  //         localStorage.clear();
-  //         location.reload();
-  //       }}
-  //     >
-  //       Logout
-  //     </button>
-  //   )}
-  //   </Row>
   <BrowserRouter>
   <Row className="justify-content-md-center">
   <Routes>
     <Route path="/login" element={<LoginView />} />
     <Route path="/signup" element={<SignupView />} />
-    <Route path="/" element={<MoviesList movies={movies} />} />
-    {/* <Route path="/movies/:movieID" element={<MovieView />} /> */}
+    <Route path="/" element={<MoviesList setSelectedMovie={setSelectedMovie} movies={movies} />} />
+    <Route path="/movies/:movieID" element={<MovieView />} />
   </Routes>
   </Row>
   </BrowserRouter>
