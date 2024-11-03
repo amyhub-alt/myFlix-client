@@ -40,7 +40,7 @@ export const MovieView = () => {
         <span>Genre: </span>
         <span>{movie.Genre && movie.Genre.Name}</span>
       </div>
-      <Link to={`/`}>
+      <Link to={"/"}>
       <button
         className="back-button"
         style={{ cursor: "pointer" }}>

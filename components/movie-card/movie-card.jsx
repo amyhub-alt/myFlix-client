@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-export const MovieCard = ({ movie }) => {
+export const MovieCard = ({ movie, onMovieClick }) => {
   return (
     <Link to={`/movies/${encodeURIComponent(movie.id)}`}>
     <Card className="h-100" onClick={() =>onMovieClick(movie)} style={{ cursor:"pointer" }}>
@@ -21,12 +21,8 @@ export const MovieCard = ({ movie }) => {
 
 MovieCard.propTypes = {
   movie: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired,
-    imagePath: PropTypes.string.isRequired,
-    director: PropTypes.string.isRequired,
+    title: PropTypes.string
   }).isRequired,
+    imagePath: PropTypes.string.isRequired,
+    director: PropTypes.string.isRequired
 };
-
-
-
