@@ -6,7 +6,7 @@ import { SignupView } from "../signup-view/signup-view";
 
 import Row from "react-bootstrap/Row";
 import Col from 'react-bootstrap/Col';
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { MoviesList } from "../movie-list/movie-list";
 
 export const MainView = () => {
@@ -44,14 +44,26 @@ useEffect(() => {
 
 return(
   <BrowserRouter>
-  <Row className="justify-content-md-center">
-  <Routes>
-    <Route path="/login" element={<LoginView />} />
-    <Route path="/signup" element={<SignupView />} />
-    <Route path="/" element={<MoviesList setSelectedMovie={setSelectedMovie} movies={movies} />} />
-    <Route path="/movies/:movieID" element={<MovieView />} />
-  </Routes>
-  </Row>
+    <Row className="justify-content-md-center">
+      <Routes>
+        <Route 
+          path="/login" 
+          element={user ? <Navigate to="/" /> : <Col><LoginView /></Col>} 
+        />
+        <Route 
+          path="/signup" 
+          element={user ? <Navigate to="/" /> : <Col><SignupView /></Col>} 
+        />
+        <Route 
+          path="/" 
+          element={<MoviesList setSelectedMovie={setSelectedMovie} movies={movies} />} 
+        />
+        <Route 
+          path="/movies/:movieID" 
+          element={<MovieView />} 
+        />
+      </Routes>
+    </Row>
   </BrowserRouter>
   );
 };

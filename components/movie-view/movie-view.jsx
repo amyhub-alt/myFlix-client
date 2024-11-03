@@ -1,10 +1,10 @@
-import PropTypes from "prop-types";
 import "./movie-view.scss";
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 
-export const MovieView = ({ onBackClick }) => {
+export const MovieView = () => {
   const [movie, setMovie] = useState({});
   const {movieID} = useParams();
 
@@ -20,7 +20,7 @@ export const MovieView = ({ onBackClick }) => {
       .catch((error) => {
         console.error("Error fetching movies:", error); // Log any potential errors
       });
-  }, [movie]);
+  }, [movieID]);
 
 
   return (
@@ -40,21 +40,14 @@ export const MovieView = ({ onBackClick }) => {
         <span>Genre: </span>
         <span>{movie.Genre && movie.Genre.Name}</span>
       </div>
-      <button onClick={() => location.href = "/"} 
-      className="back-button"
-        style={{ cursor: "pointer" }}
-        >
+      <Link to={`/`}>
+      <button
+        className="back-button"
+        style={{ cursor: "pointer" }}>
         Back
         </button>
+        </Link>
     </div>
   );
 };
 
-// MovieView.propTypes = {
-//   movie: PropTypes.shape({
-//     title: PropTypes.string,
-//     director: PropTypes.object,
-//     genre: PropTypes.object,
-//   }).isRequired,
-//   onBackClick: PropTypes.func.isRequired
-// };
