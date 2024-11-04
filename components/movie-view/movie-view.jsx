@@ -2,6 +2,7 @@ import "./movie-view.scss";
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { MovieCard } from "../movie-card/movie-card";
 
 
 export const MovieView = () => {
@@ -47,6 +48,7 @@ export const MovieView = () => {
         Back
         </button>
         </Link>
+       
     </div>
   );
 };

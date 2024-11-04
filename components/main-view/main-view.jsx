@@ -8,6 +8,7 @@ import Row from "react-bootstrap/Row";
 import Col from 'react-bootstrap/Col';
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { MoviesList } from "../movie-list/movie-list";
+import { NavMenu } from "../nav-bar/NavMenu";
 
 export const MainView = () => {
   const [movies, setMovies] = useState([]);
@@ -44,6 +45,7 @@ useEffect(() => {
 
 return(
   <BrowserRouter>
+  <NavMenu />
     <Row className="justify-content-md-center">
       <Routes>
         <Route 
@@ -56,7 +58,7 @@ return(
         />
         <Route 
           path="/" 
-          element={<MoviesList setSelectedMovie={setSelectedMovie} movies={movies} />} 
+          element={<MoviesList movies={movies} />} 
         />
         <Route 
           path="/movies/:movieID" 
