@@ -1,12 +1,14 @@
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { useNavigate } from "react-router-dom";
 
 export const formStyle = { margin: "10px", border: "2px solid #d5d5d5", borderRadius: "10px", padding: "20px", boxShadow: "2px 2px #000000"};
 
 export const LoginView = ({ onLoggedIn }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     // this prevents the default behavior of the form which is to reload the entire page
@@ -30,16 +32,19 @@ export const LoginView = ({ onLoggedIn }) => {
         console.log(data);
         if (data.user) {
          
-          // onLoggedIn(data.user, data.token);
+          onLoggedIn(data.user, data.token);
           localStorage.setItem("user", JSON.stringify(data.user))
           localStorage.setItem("token", data.token)
-          location.href="/";
+          navigate("/");
+
         } else {
-          alert("No such user");
-        }
+            console.log("Login failed: ", data);
+            alert("No such user or invalid credentials");
+          }
       })
       .catch((e) => {
-        alert("Something went wrong");
+        console.error("Error during fetch: ", e);
+    alert("Something went wrong: " + e.message);
       });
   };
 
@@ -72,28 +77,3 @@ export const LoginView = ({ onLoggedIn }) => {
 );
 };
 
-
-
-//     <form onSubmit={handleSubmit}>
-//       <label>
-//         Username:
-//         <input
-//           type="text"
-//           value={username}
-//           onChange={(e) => setUsername(e.target.value)}
-//           required
-//         />
-//       </label>
-//       <label>
-//         Password:
-//         <input
-//           type="password"
-//           value={password}
-//           onChange={(e) => setPassword(e.target.value)}
-//           required
-//         />
-//       </label>
-//       <button type="submit">Submit</button>
-//     </form>
-//   );
-// };

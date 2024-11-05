@@ -8,7 +8,7 @@ import Row from "react-bootstrap/Row";
 import Col from 'react-bootstrap/Col';
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { MoviesList } from "../movie-list/movie-list";
-import { NavMenu } from "../nav-bar/NavMenu";
+import { NavigationBar } from "../navigation-bar/navigation-bar";
 
 export const MainView = () => {
   const [movies, setMovies] = useState([]);
@@ -44,24 +44,51 @@ useEffect(() => {
 
 return(
   <BrowserRouter>
-  <NavMenu />
+  <NavigationBar user={user} onLoggedOut={() => setUser(null)} />
     <Row className="justify-content-md-center">
       <Routes>
         <Route 
           path="/login" 
-          element={user ? <Navigate to="/" /> : <Col><LoginView /></Col>} 
+          element={user ? <Navigate to="/" /> : <Col><LoginView onLoggedIn={(user) => setUser(user)} /></Col>} 
         />
+
         <Route 
           path="/signup" 
           element={user ? <Navigate to="/" /> : <Col><SignupView /></Col>} 
         />
+
         <Route 
           path="/" 
-          element={<MoviesList movies={movies} />} 
+          element={
+            <>
+              {!user ? (
+                <Navigate to="/login" replace />
+              ) : movies.length === 0 ? (
+                <Col>The list is empty!</Col>
+              ) : (
+                <MoviesList movies={movies} /> 
+              )}
+            </>
+          }
         />
+
+        
+
         <Route 
           path="/movies/:movieID" 
-          element={<MovieView />} 
+          element={
+            <>
+            {!user ? (
+                <Navigate to="/login" replace />
+              ) : movies.length === 0 ? (
+                <Col>The list is empty!</Col>
+              ) : (
+                <Col>
+                  <MovieView/>
+                </Col>
+              )}
+           </>
+          }
         />
       </Routes>
     </Row>
