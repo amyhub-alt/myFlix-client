@@ -27262,7 +27262,6 @@ var _s = $RefreshSig$();
 const MainView = ()=>{
     _s();
     const [movies, setMovies] = (0, _react.useState)([]);
-    const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
     const [user, setUser] = (0, _react.useState)(null);
     const [token, setToken] = (0, _react.useState)(null);
     (0, _react.useEffect)(()=>{
@@ -27293,7 +27292,7 @@ const MainView = ()=>{
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navMenu.NavMenu), {}, void 0, false, {
                 fileName: "components/main-view/main-view.jsx",
-                lineNumber: 48,
+                lineNumber: 47,
                 columnNumber: 3
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _rowDefault.default), {
@@ -27306,22 +27305,22 @@ const MainView = ()=>{
                                 to: "/"
                             }, void 0, false, {
                                 fileName: "components/main-view/main-view.jsx",
-                                lineNumber: 53,
+                                lineNumber: 52,
                                 columnNumber: 27
                             }, void 0) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
                                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginView.LoginView), {}, void 0, false, {
                                     fileName: "components/main-view/main-view.jsx",
-                                    lineNumber: 53,
+                                    lineNumber: 52,
                                     columnNumber: 54
                                 }, void 0)
                             }, void 0, false, {
                                 fileName: "components/main-view/main-view.jsx",
-                                lineNumber: 53,
+                                lineNumber: 52,
                                 columnNumber: 49
                             }, void 0)
                         }, void 0, false, {
                             fileName: "components/main-view/main-view.jsx",
-                            lineNumber: 51,
+                            lineNumber: 50,
                             columnNumber: 9
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27330,22 +27329,22 @@ const MainView = ()=>{
                                 to: "/"
                             }, void 0, false, {
                                 fileName: "components/main-view/main-view.jsx",
-                                lineNumber: 57,
+                                lineNumber: 56,
                                 columnNumber: 27
                             }, void 0) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
                                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _signupView.SignupView), {}, void 0, false, {
                                     fileName: "components/main-view/main-view.jsx",
-                                    lineNumber: 57,
+                                    lineNumber: 56,
                                     columnNumber: 54
                                 }, void 0)
                             }, void 0, false, {
                                 fileName: "components/main-view/main-view.jsx",
-                                lineNumber: 57,
+                                lineNumber: 56,
                                 columnNumber: 49
                             }, void 0)
                         }, void 0, false, {
                             fileName: "components/main-view/main-view.jsx",
-                            lineNumber: 55,
+                            lineNumber: 54,
                             columnNumber: 9
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27354,45 +27353,45 @@ const MainView = ()=>{
                                 movies: movies
                             }, void 0, false, {
                                 fileName: "components/main-view/main-view.jsx",
-                                lineNumber: 61,
+                                lineNumber: 60,
                                 columnNumber: 20
                             }, void 0)
                         }, void 0, false, {
                             fileName: "components/main-view/main-view.jsx",
-                            lineNumber: 59,
+                            lineNumber: 58,
                             columnNumber: 9
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
                             path: "/movies/:movieID",
                             element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {}, void 0, false, {
                                 fileName: "components/main-view/main-view.jsx",
-                                lineNumber: 65,
+                                lineNumber: 64,
                                 columnNumber: 20
                             }, void 0)
                         }, void 0, false, {
                             fileName: "components/main-view/main-view.jsx",
-                            lineNumber: 63,
+                            lineNumber: 62,
                             columnNumber: 9
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "components/main-view/main-view.jsx",
-                    lineNumber: 50,
+                    lineNumber: 49,
                     columnNumber: 7
                 }, undefined)
             }, void 0, false, {
                 fileName: "components/main-view/main-view.jsx",
-                lineNumber: 49,
+                lineNumber: 48,
                 columnNumber: 5
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "components/main-view/main-view.jsx",
-        lineNumber: 47,
+        lineNumber: 46,
         columnNumber: 3
     }, undefined);
 };
-_s(MainView, "ld1mNqbzEgxPu9ZfASjBJ7ZrUMw=");
+_s(MainView, "G+gU3cQbHvHlzXx+eNRbbuJNBF0=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
