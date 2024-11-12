@@ -13,7 +13,7 @@ export const ProfileView = ({ user }) => {
       <h3>Favorite Movies</h3>
       <ul>
         {FavoriteMovies && FavoriteMovies.length > 0 ? (
-          favoriteMovies.map((movie) => (
+          FavoriteMovies.map((movie) => (
             <li key={movie._id}>{movie.Title}</li>
           ))
         ) : (

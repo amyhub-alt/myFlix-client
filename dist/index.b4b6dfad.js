@@ -42480,7 +42480,7 @@ const ProfileView = ({ user })=>{
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
-                children: FavoriteMovies && FavoriteMovies.length > 0 ? favoriteMovies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                children: FavoriteMovies && FavoriteMovies.length > 0 ? FavoriteMovies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
                         children: movie.Title
                     }, movie._id, false, {
                         fileName: "components/profile-view/profile-view.jsx",
