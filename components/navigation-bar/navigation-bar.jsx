@@ -2,6 +2,7 @@ import { Navbar, Container, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 export const NavigationBar = ({user, onLoggedOut})=> {
+  console.log(user)
   const logOut = () => {
       localStorage.clear();
       onLoggedOut();
@@ -16,7 +17,7 @@ export const NavigationBar = ({user, onLoggedOut})=> {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            {!user && (
+            {!user ? (
               <>
                 <Nav.Link as={Link} to="/login">
                   Login
@@ -25,13 +26,12 @@ export const NavigationBar = ({user, onLoggedOut})=> {
                   Signup
                 </Nav.Link>
               </>
-            )}
-            {user && (
+            ) : (
               <>
                 <Nav.Link as={Link} to="/">
                   Home
                 </Nav.Link>
-                <Nav.Link as={Link} to="/">
+                <Nav.Link as={Link} to={`/users/${user.Username}`}>
                   Profile
                 </Nav.Link>
                 <Nav.Link as="button" onClick={logOut} style={{ border: "none", background: "none", padding: 0, color: "inherit", cursor: "pointer" }}>

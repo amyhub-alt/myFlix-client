@@ -4,11 +4,13 @@ import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
 
+
 import Row from "react-bootstrap/Row";
 import Col from 'react-bootstrap/Col';
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { MoviesList } from "../movie-list/movie-list";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
+import { ProfileView } from "../profile-view/profile-view";
 
 export const MainView = () => {
   const [movies, setMovies] = useState([]);
@@ -90,6 +92,20 @@ return(
            </>
           }
         />
+
+        <Route
+          path="/users/:username"
+          element={
+            !user ? (
+              <Navigate to="/login" replace />
+            ) : (
+              <Col>
+                <ProfileView user={user} />
+              </Col>
+            )
+          }
+        />
+
       </Routes>
     </Row>
   </BrowserRouter>
