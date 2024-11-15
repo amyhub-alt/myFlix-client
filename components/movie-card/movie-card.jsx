@@ -12,13 +12,32 @@ export const MovieCard = ({ movie, user }) => {
     })
       .then((response) => response.json())
       .then ((data) => {
-       console.log(data)
+        if(data) alert("Movie Added!")
       })
       .catch((error) => {
         console.error("Error fetching movies:", error); // Log any potential errors
       });
 
   }
+
+  const handleDelFav = () => {
+
+    fetch("https://movie-api-amy-d13640458d52.herokuapp.com/users/"+user.Username+"/"+"movies/" + movie.id, 
+      {
+      headers: {Authorization: `Bearer ${localStorage.getItem("token")}` },
+      method: "DELETE"
+    })
+      .then((response) => response.json())
+      .then ((data) => {
+        if(data) alert("Removed!")
+      //  console.log(data)
+      })
+      .catch((error) => {
+        console.error("Error fetching movies:", error); // Log any potential errors
+      });
+
+  }
+
 
   return (
    
@@ -30,7 +49,7 @@ export const MovieCard = ({ movie, user }) => {
         <Card.Title>{movie.title}</Card.Title>
         <Card.Text>{movie.director}</Card.Text>
         </Link>
-        <button onClick={() => handleFav()}>Add</button><button>Remove</button>
+        <button onClick={() => handleFav()}>Add</button><button onClick={() => handleDelFav()}>Remove</button>
       </Card.Body>
       
 

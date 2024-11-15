@@ -27495,7 +27495,20 @@ const MovieCard = ({ movie, user })=>{
             },
             method: "POST"
         }).then((response)=>response.json()).then((data)=>{
-            console.log(data);
+            if (data) alert("Movie Added!");
+        }).catch((error)=>{
+            console.error("Error fetching movies:", error); // Log any potential errors
+        });
+    };
+    const handleDelFav = ()=>{
+        fetch("https://movie-api-amy-d13640458d52.herokuapp.com/users/" + user.Username + "/" + "movies/" + movie.id, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`
+            },
+            method: "DELETE"
+        }).then((response)=>response.json()).then((data)=>{
+            if (data) alert("Removed!");
+        //  console.log(data)
         }).catch((error)=>{
             console.error("Error fetching movies:", error); // Log any potential errors
         });
@@ -27511,7 +27524,7 @@ const MovieCard = ({ movie, user })=>{
                 src: movie.imagePath
             }, void 0, false, {
                 fileName: "components/movie-card/movie-card.jsx",
-                lineNumber: 27,
+                lineNumber: 46,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Body, {
@@ -27523,20 +27536,20 @@ const MovieCard = ({ movie, user })=>{
                                 children: movie.title
                             }, void 0, false, {
                                 fileName: "components/movie-card/movie-card.jsx",
-                                lineNumber: 30,
+                                lineNumber: 49,
                                 columnNumber: 9
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Text, {
                                 children: movie.director
                             }, void 0, false, {
                                 fileName: "components/movie-card/movie-card.jsx",
-                                lineNumber: 31,
+                                lineNumber: 50,
                                 columnNumber: 9
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "components/movie-card/movie-card.jsx",
-                        lineNumber: 29,
+                        lineNumber: 48,
                         columnNumber: 7
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -27544,26 +27557,27 @@ const MovieCard = ({ movie, user })=>{
                         children: "Add"
                     }, void 0, false, {
                         fileName: "components/movie-card/movie-card.jsx",
-                        lineNumber: 33,
+                        lineNumber: 52,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                        onClick: ()=>handleDelFav(),
                         children: "Remove"
                     }, void 0, false, {
                         fileName: "components/movie-card/movie-card.jsx",
-                        lineNumber: 33,
+                        lineNumber: 52,
                         columnNumber: 57
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "components/movie-card/movie-card.jsx",
-                lineNumber: 28,
+                lineNumber: 47,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "components/movie-card/movie-card.jsx",
-        lineNumber: 25,
+        lineNumber: 44,
         columnNumber: 5
     }, undefined);
 };
