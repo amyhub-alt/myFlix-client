@@ -3,15 +3,16 @@ import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 export const ProfileView = ({ user }) => {
-  const { Username, Password, Email, FavoriteMovies } = user;
+  const { Username, Password, Email, Birthday, FavoriteMovies } = user;
   const [email, setEmail] = useState(Email);
-  const [updateduser, setUser] = useState({})
+  const [birthday, setBirthday] = useState(Birthday);
+  const [updateduser, setUser] = useState(user)
 
- const handleEmail = (evt) => {
-  const value = evt.target.value;
-  console.log(value)
-   setEmail(value)
- } 
+//  const handleEmail = (evt) => {
+//   const value = evt.target.value;
+//   console.log(value)
+//    setEmail(value)
+//  } 
 
  const editUser = () => {
   console.log( { Username, Password, Email, FavoriteMovies });
@@ -24,38 +25,64 @@ export const ProfileView = ({ user }) => {
     body: JSON.stringify({
         Username,
         Password,
+        Birthday: birthday,
         Email: email
     })
   })
     .then((response) => response.json())
     .then ((data) => {
-      console.log(data)
+      console.log(data);
       if (data) {
-        alert("Profile updated successfuly!")
+        alert("Profile updated successfuly!");
+        setUser(data);
       }
-      setUser(data);
+      
     })
     .catch((error) => {
       console.error("Error updating user:", error); // Log any potential errors
     });
+ };
+
+ const deleteUser = () => {
+  if (window.confirm("Are you sure you want to delete your account? This action cannot be undone.")) {
+    fetch("https://movie-api-amy-d13640458d52.herokuapp.com/users/" + Username, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + localStorage.getItem("token")
+      }
+    })
+      .then((response) => {
+        if (response.ok) {
+          alert("Your account has been deleted successfully.");
+          localStorage.clear();
+          window.location.href = "/";
+        } else {
+          alert("Failed to delete account. Please try again.");
+        }
+      })
+      .catch((error) => {
+        console.error("Error deleting account:", error);
+        alert("An error occurred while trying to delete your account.");
+      });
+  }
+};
 
 
-
- }
 
 
   return(
     <div>
       <h1>{Username}'s Profile</h1>
       <p>Username: {Username} </p>
+      <p>Email: <input type="text" value={email} onChange={(evt)=> setEmail(evt.target.value)} /> </p>
+      <p>Birthdat: <input type="text" value={`${new Date(birthday).getMonth()}-${new Date(birthday).getDay()}-${new Date(birthday).getFullYear()}`} onChange={(evt)=> setBirthday(evt.target.value)} /> </p>
 
-      <p>Email: <input type="text" value={email} onChange={handleEmail} /> </p>
-      
     
       <Link to={`/users/${user.Username}`}>
       <Button onClick={() => editUser()}>Edit Profile</Button>
       </Link>
-      <Button variant="danger">Delete Account</Button>
+      <Button variant="danger" onClick={deleteUser}>Delete Account</Button>
       < br/> <br />
 
       <h3>Favorite Movies</h3>

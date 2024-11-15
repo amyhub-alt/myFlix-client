@@ -27,7 +27,7 @@ useEffect(() => {
   })
     .then((response) => response.json())
     .then ((data) => {
-      console.log(data)
+      // console.log(data)
       const moviesFromApi = data.map((movie) => {
         return {
           id: movie._id,
@@ -42,7 +42,7 @@ useEffect(() => {
     .catch((error) => {
       console.error("Error fetching movies:", error); // Log any potential errors
     });
-}, [token]);
+}, [token, movies]);
 
 return(
   <BrowserRouter>
@@ -68,7 +68,7 @@ return(
               ) : movies.length === 0 ? (
                 <Col>The list is empty!</Col>
               ) : (
-                <MoviesList movies={movies} /> 
+                <MoviesList movies={movies} user={user} /> 
               )}
             </>
           }
@@ -86,7 +86,7 @@ return(
                 <Col>The list is empty!</Col>
               ) : (
                 <Col>
-                  <MovieView/>
+                  <MovieView />
                 </Col>
               )}
            </>

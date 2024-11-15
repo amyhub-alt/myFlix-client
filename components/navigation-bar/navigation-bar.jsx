@@ -2,7 +2,7 @@ import { Navbar, Container, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 export const NavigationBar = ({user, onLoggedOut})=> {
-  console.log(user)
+  // console.log(user)
   const logOut = () => {
       localStorage.clear();
       onLoggedOut();
