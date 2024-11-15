@@ -27517,7 +27517,8 @@ const MovieCard = ({ movie, user })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card), {
         className: "h-100",
         style: {
-            cursor: "pointer"
+            cursor: "pointer",
+            width: "300px"
         },
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Img, {

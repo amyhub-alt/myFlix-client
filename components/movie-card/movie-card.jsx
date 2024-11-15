@@ -41,7 +41,7 @@ export const MovieCard = ({ movie, user }) => {
 
   return (
    
-    <Card className="h-100" style={{ cursor:"pointer" }}>
+    <Card className="h-100" style={{ cursor:"pointer", width: "300px" }}>
       
       <Card.Img variant="top" src={movie.imagePath} />
       <Card.Body>
