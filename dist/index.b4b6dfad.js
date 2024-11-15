@@ -27559,7 +27559,7 @@ const MovieCard = ({ movie, user })=>{
                         children: "Add"
                     }, void 0, false, {
                         fileName: "components/movie-card/movie-card.jsx",
-                        lineNumber: 52,
+                        lineNumber: 54,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -27567,7 +27567,7 @@ const MovieCard = ({ movie, user })=>{
                         children: "Remove"
                     }, void 0, false, {
                         fileName: "components/movie-card/movie-card.jsx",
-                        lineNumber: 52,
+                        lineNumber: 54,
                         columnNumber: 57
                     }, undefined)
                 ]
