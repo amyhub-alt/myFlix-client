@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { MovieCard } from "../movie-card/movie-card";
 
-export const ProfileView = ({ user }) => {
+export const ProfileView = ({ user, movies }) => {
   const { Username, Password, Email, Birthday, FavoriteMovies } = user;
   const [email, setEmail] = useState(Email);
   const [birthday, setBirthday] = useState(Birthday);
@@ -88,8 +89,8 @@ export const ProfileView = ({ user }) => {
       <h3>Favorite Movies</h3>
       <ul>
         {FavoriteMovies && FavoriteMovies.length > 0 ? (
-          FavoriteMovies.map((movie) => (
-            <li key={movie._id}>{movie.Title}</li>
+          movies.filter(m=>FavoriteMovies.includes(m.id)).map((movie) => (
+           <MovieCard movie={movie} />
           ))
         ) : (
           <p>No favorite movies added yet.</p>
