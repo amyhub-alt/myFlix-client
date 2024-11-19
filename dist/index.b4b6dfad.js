@@ -27373,7 +27373,8 @@ const MainView = ()=>{
                                     columnNumber: 17
                                 }, void 0) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieList.MoviesList), {
                                     movies: movies,
-                                    user: user
+                                    user: user,
+                                    setUser: setUser
                                 }, void 0, false, {
                                     fileName: "components/main-view/main-view.jsx",
                                     lineNumber: 71,
@@ -27491,7 +27492,7 @@ var _react = require("react");
 var _reactBootstrap = require("react-bootstrap");
 var _reactRouterDom = require("react-router-dom");
 var _s = $RefreshSig$();
-const MovieCard = ({ movie, user })=>{
+const MovieCard = ({ movie, user, setUser })=>{
     _s();
     const [isFav, setIsfav] = (0, _react.useState)(false);
     const handleFav = ()=>{
@@ -27501,7 +27502,9 @@ const MovieCard = ({ movie, user })=>{
             },
             method: "POST"
         }).then((response)=>response.json()).then((data)=>{
+            console.log(data);
             if (data) alert("Movie Added!");
+            setUser(data);
         }).catch((error)=>{
             console.error("Error fetching movies:", error); // Log any potential errors
         });
@@ -27514,7 +27517,8 @@ const MovieCard = ({ movie, user })=>{
             method: "DELETE"
         }).then((response)=>response.json()).then((data)=>{
             if (data) alert("Removed!");
-        //  console.log(data)
+            setUser(data);
+            console.log(data);
         }).catch((error)=>{
             console.error("Error fetching movies:", error); // Log any potential errors
         });
@@ -27536,7 +27540,7 @@ const MovieCard = ({ movie, user })=>{
                 src: movie.imagePath
             }, void 0, false, {
                 fileName: "components/movie-card/movie-card.jsx",
-                lineNumber: 51,
+                lineNumber: 54,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Body, {
@@ -27548,20 +27552,20 @@ const MovieCard = ({ movie, user })=>{
                                 children: movie.title
                             }, void 0, false, {
                                 fileName: "components/movie-card/movie-card.jsx",
-                                lineNumber: 54,
+                                lineNumber: 57,
                                 columnNumber: 9
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Text, {
                                 children: movie.director
                             }, void 0, false, {
                                 fileName: "components/movie-card/movie-card.jsx",
-                                lineNumber: 55,
+                                lineNumber: 58,
                                 columnNumber: 9
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "components/movie-card/movie-card.jsx",
-                        lineNumber: 53,
+                        lineNumber: 56,
                         columnNumber: 7
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -27573,19 +27577,19 @@ const MovieCard = ({ movie, user })=>{
                         children: isFav ? "Remove" : "Add"
                     }, void 0, false, {
                         fileName: "components/movie-card/movie-card.jsx",
-                        lineNumber: 57,
+                        lineNumber: 60,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "components/movie-card/movie-card.jsx",
-                lineNumber: 52,
+                lineNumber: 55,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "components/movie-card/movie-card.jsx",
-        lineNumber: 49,
+        lineNumber: 52,
         columnNumber: 5
     }, undefined);
 };
@@ -42330,12 +42334,13 @@ var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _col = require("react-bootstrap/Col");
 var _colDefault = parcelHelpers.interopDefault(_col);
 var _movieCard = require("../movie-card/movie-card");
-const MoviesList = ({ movies, user })=>movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
+const MoviesList = ({ movies, user, setUser })=>movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
             className: "mb-5",
             md: 3,
             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
                 movie: movie,
-                user: user
+                user: user,
+                setUser: setUser
             }, void 0, false, {
                 fileName: "components/movie-list/movie-list.jsx",
                 lineNumber: 7,

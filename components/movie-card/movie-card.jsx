@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-export const MovieCard = ({ movie, user }) => {
+export const MovieCard = ({ movie, user, setUser }) => {
   const [isFav, setIsfav] = useState(false);
   const handleFav = () => {
 
@@ -14,7 +14,9 @@ export const MovieCard = ({ movie, user }) => {
     })
       .then((response) => response.json())
       .then ((data) => {
+        console.log(data)
         if(data) alert("Movie Added!")
+        setUser(data)
       })
       .catch((error) => {
         console.error("Error fetching movies:", error); // Log any potential errors
@@ -32,7 +34,8 @@ export const MovieCard = ({ movie, user }) => {
       .then((response) => response.json())
       .then ((data) => {
         if(data) alert("Removed!")
-      //  console.log(data)
+        setUser(data)
+       console.log(data)
       })
       .catch((error) => {
         console.error("Error fetching movies:", error); // Log any potential errors

@@ -68,7 +68,7 @@ return(
               ) : movies.length === 0 ? (
                 <Col>The list is empty!</Col>
               ) : (
-                <MoviesList movies={movies} user={user} /> 
+                <MoviesList movies={movies} user={user} setUser={setUser} /> 
               )}
             </>
           }
