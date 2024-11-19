@@ -42,7 +42,7 @@ useEffect(() => {
     .catch((error) => {
       console.error("Error fetching movies:", error); // Log any potential errors
     });
-}, [token, movies]);
+}, [token, movies, user]);
 
 return(
   <BrowserRouter>

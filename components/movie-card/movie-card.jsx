@@ -1,8 +1,10 @@
 import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
 import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 export const MovieCard = ({ movie, user }) => {
+  const [isFav, setIsfav] = useState(false);
   const handleFav = () => {
 
     fetch("https://movie-api-amy-d13640458d52.herokuapp.com/users/"+user.Username+"/"+"movies/" + movie.id, 
@@ -38,6 +40,9 @@ export const MovieCard = ({ movie, user }) => {
 
   }
 
+  useEffect(() => {
+    setIsfav(user && user.FavoriteMovies.includes(movie.id))
+  }, [user])
 
   return (
    
@@ -49,9 +54,10 @@ export const MovieCard = ({ movie, user }) => {
         <Card.Title>{movie.title}</Card.Title>
         <Card.Text>{movie.director}</Card.Text>
         </Link>
+        <button onClick={() => isFav? handleDelFav() : handleFav() } style={{backgroundColor: `${isFav? "red": "blue"}`, color: "white"}}>{isFav ? "Remove" : "Add" }</button>
         {/* Try to use just one button for adding and removing of fav movies.
         For example, when i click on 'Add' it adds the movie and the button bgcolor changes to red with the text  'Remove' */}
-        <button onClick={() => handleFav()}>Add</button><button onClick={() => handleDelFav()}>Remove</button>
+        {/* <button onClick={() => handleFav()}>Add</button><button onClick={() => handleDelFav()}>Remove</button> */}
       </Card.Body>
       
 

@@ -27288,7 +27288,8 @@ const MainView = ()=>{
         });
     }, [
         token,
-        movies
+        movies,
+        user
     ]);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.BrowserRouter), {
         children: [
@@ -27486,9 +27487,13 @@ parcelHelpers.export(exports, "MovieCard", ()=>MovieCard);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _propTypes = require("prop-types");
 var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+var _react = require("react");
 var _reactBootstrap = require("react-bootstrap");
 var _reactRouterDom = require("react-router-dom");
+var _s = $RefreshSig$();
 const MovieCard = ({ movie, user })=>{
+    _s();
+    const [isFav, setIsfav] = (0, _react.useState)(false);
     const handleFav = ()=>{
         fetch("https://movie-api-amy-d13640458d52.herokuapp.com/users/" + user.Username + "/" + "movies/" + movie.id, {
             headers: {
@@ -27514,6 +27519,11 @@ const MovieCard = ({ movie, user })=>{
             console.error("Error fetching movies:", error); // Log any potential errors
         });
     };
+    (0, _react.useEffect)(()=>{
+        setIsfav(user && user.FavoriteMovies.includes(movie.id));
+    }, [
+        user
+    ]);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card), {
         className: "h-100",
         style: {
@@ -27526,7 +27536,7 @@ const MovieCard = ({ movie, user })=>{
                 src: movie.imagePath
             }, void 0, false, {
                 fileName: "components/movie-card/movie-card.jsx",
-                lineNumber: 46,
+                lineNumber: 51,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Body, {
@@ -27538,51 +27548,48 @@ const MovieCard = ({ movie, user })=>{
                                 children: movie.title
                             }, void 0, false, {
                                 fileName: "components/movie-card/movie-card.jsx",
-                                lineNumber: 49,
+                                lineNumber: 54,
                                 columnNumber: 9
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Text, {
                                 children: movie.director
                             }, void 0, false, {
                                 fileName: "components/movie-card/movie-card.jsx",
-                                lineNumber: 50,
+                                lineNumber: 55,
                                 columnNumber: 9
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "components/movie-card/movie-card.jsx",
-                        lineNumber: 48,
+                        lineNumber: 53,
                         columnNumber: 7
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                        onClick: ()=>handleFav(),
-                        children: "Add"
+                        onClick: ()=>isFav ? handleDelFav() : handleFav(),
+                        style: {
+                            backgroundColor: `${isFav ? "red" : "blue"}`,
+                            color: "white"
+                        },
+                        children: isFav ? "Remove" : "Add"
                     }, void 0, false, {
                         fileName: "components/movie-card/movie-card.jsx",
-                        lineNumber: 54,
+                        lineNumber: 57,
                         columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                        onClick: ()=>handleDelFav(),
-                        children: "Remove"
-                    }, void 0, false, {
-                        fileName: "components/movie-card/movie-card.jsx",
-                        lineNumber: 54,
-                        columnNumber: 57
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "components/movie-card/movie-card.jsx",
-                lineNumber: 47,
+                lineNumber: 52,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "components/movie-card/movie-card.jsx",
-        lineNumber: 44,
+        lineNumber: 49,
         columnNumber: 5
     }, undefined);
 };
+_s(MovieCard, "cgjT/ORgbUNoFO3GITZXFJOlca4=");
 _c = MovieCard;
 MovieCard.propTypes = {
     movie: (0, _propTypesDefault.default).shape({
@@ -27599,7 +27606,7 @@ $RefreshReg$(_c, "MovieCard");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","prop-types":"7wKI2","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"ellJ5","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"iEnEf","react-router-dom":"9xmpe"}],"7wKI2":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","prop-types":"7wKI2","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"ellJ5","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"iEnEf","react-router-dom":"9xmpe","react":"21dqq"}],"7wKI2":[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -42168,7 +42175,7 @@ const SignupView = ()=>{
         }).then((response)=>{
             if (response.ok) {
                 alert("Signup successful");
-                window.location.reload();
+                location.href = "/login";
             } else alert("Signup failed");
         });
     };
