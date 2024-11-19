@@ -27492,7 +27492,7 @@ var _react = require("react");
 var _reactBootstrap = require("react-bootstrap");
 var _reactRouterDom = require("react-router-dom");
 var _s = $RefreshSig$();
-const MovieCard = ({ movie, user, setUser })=>{
+const MovieCard = ({ movie, user, setUser, displayButton = true })=>{
     _s();
     const [isFav, setIsfav] = (0, _react.useState)(false);
     const handleFav = ()=>{
@@ -27568,7 +27568,7 @@ const MovieCard = ({ movie, user, setUser })=>{
                         lineNumber: 56,
                         columnNumber: 7
                     }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                    displayButton && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                         onClick: ()=>isFav ? handleDelFav() : handleFav(),
                         style: {
                             backgroundColor: `${isFav ? "red" : "blue"}`,
@@ -27577,8 +27577,8 @@ const MovieCard = ({ movie, user, setUser })=>{
                         children: isFav ? "Remove" : "Add"
                     }, void 0, false, {
                         fileName: "components/movie-card/movie-card.jsx",
-                        lineNumber: 60,
-                        columnNumber: 9
+                        lineNumber: 61,
+                        columnNumber: 11
                     }, undefined)
                 ]
             }, void 0, true, {
@@ -42674,7 +42674,8 @@ const ProfileView = ({ user, movies })=>{
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
                 children: FavoriteMovies && FavoriteMovies.length > 0 ? movies.filter((m)=>FavoriteMovies.includes(m.id)).map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
-                        movie: movie
+                        movie: movie,
+                        displayButton: false
                     }, void 0, false, {
                         fileName: "components/profile-view/profile-view.jsx",
                         lineNumber: 93,

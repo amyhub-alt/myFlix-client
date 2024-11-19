@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-export const MovieCard = ({ movie, user, setUser }) => {
+export const MovieCard = ({ movie, user, setUser, displayButton=true }) => {
   const [isFav, setIsfav] = useState(false);
   const handleFav = () => {
 
@@ -57,7 +57,8 @@ export const MovieCard = ({ movie, user, setUser }) => {
         <Card.Title>{movie.title}</Card.Title>
         <Card.Text>{movie.director}</Card.Text>
         </Link>
-        <button onClick={() => isFav? handleDelFav() : handleFav() } style={{backgroundColor: `${isFav? "red": "blue"}`, color: "white"}}>{isFav ? "Remove" : "Add" }</button>
+        {displayButton &&
+          <button onClick={() => isFav? handleDelFav() : handleFav() } style={{backgroundColor: `${isFav? "red": "blue"}`, color: "white"}}>{isFav ? "Remove" : "Add" }</button>}
         {/* Try to use just one button for adding and removing of fav movies.
         For example, when i click on 'Add' it adds the movie and the button bgcolor changes to red with the text  'Remove' */}
         {/* <button onClick={() => handleFav()}>Add</button><button onClick={() => handleDelFav()}>Remove</button> */}

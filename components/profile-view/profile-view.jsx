@@ -90,7 +90,7 @@ export const ProfileView = ({ user, movies }) => {
       <ul>
         {FavoriteMovies && FavoriteMovies.length > 0 ? (
           movies.filter(m=>FavoriteMovies.includes(m.id)).map((movie) => (
-           <MovieCard movie={movie} />
+           <MovieCard movie={movie} displayButton={false} />
           ))
         ) : (
           <p>No favorite movies added yet.</p>
