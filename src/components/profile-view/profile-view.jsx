@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { MovieCard } from "../movie-card/movie-card";
 
-export const ProfileView = ({ user, movies }) => {
+export const ProfileView = ({ user, movies, setUser }) => {
   const { Username, Password, Email, Birthday, FavoriteMovies } = user;
   const [email, setEmail] = useState(Email);
   const [birthday, setBirthday] = useState(Birthday);
-  const [updateduser, setUser] = useState(user)
+  // const [updateduser, setUser] = useState(user)
 
 //  const handleEmail = (evt) => {
 //   const value = evt.target.value;
@@ -87,17 +87,24 @@ export const ProfileView = ({ user, movies }) => {
       < br/> <br />
 
       <h3>Favorite Movies</h3>
-      <ul>
-        {FavoriteMovies && FavoriteMovies.length > 0 ? (
-          movies.filter(m=>FavoriteMovies.includes(m.id)).map((movie) => (
-           <MovieCard movie={movie} displayButton={false} />
-          ))
-        ) : (
-          <p>No favorite movies added yet.</p>
-        )}
-      </ul>
-
-     
+        <ul>
+          {FavoriteMovies && FavoriteMovies.length > 0 ? (
+            movies
+              .filter((m) => FavoriteMovies.includes(m.id))
+              .map((movie) => (
+                <li key={movie.id} style={{ listStyleType: "none", marginBottom: "10px" }}>
+                  <MovieCard 
+                      movie={movie}
+                      user={user}
+                      setUser={setUser}
+                   
+                  />
+                </li>
+              ))
+          ) : (
+            <p>No favorite movies added yet.</p>
+          )}
+        </ul>
     </div>
   );
 };

@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
@@ -100,7 +99,7 @@ return(
               <Navigate to="/login" replace />
             ) : (
               <Col>
-                <ProfileView user={user} movies={movies} />
+                <ProfileView user={user} movies={movies} setUser={setUser} />
               </Col>
             )
           }

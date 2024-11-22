@@ -57,8 +57,8 @@ export const MovieCard = ({ movie, user, setUser, displayButton=true }) => {
         <Card.Title>{movie.title}</Card.Title>
         <Card.Text>{movie.director}</Card.Text>
         </Link>
-        {displayButton &&
-          <button onClick={() => isFav? handleDelFav() : handleFav() } style={{backgroundColor: `${isFav? "red": "blue"}`, color: "white"}}>{isFav ? "Remove" : "Add" }</button>}
+        
+          <button onClick={() => isFav? handleDelFav() : handleFav() } style={{backgroundColor: `${isFav? "red": "blue"}`, color: "white"}}>{isFav ? "Remove" : "Add" }</button>
         {/* Try to use just one button for adding and removing of fav movies.
         For example, when i click on 'Add' it adds the movie and the button bgcolor changes to red with the text  'Remove' */}
         {/* <button onClick={() => handleFav()}>Add</button><button onClick={() => handleDelFav()}>Remove</button> */}
