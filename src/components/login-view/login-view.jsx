@@ -19,6 +19,8 @@ export const LoginView = ({ onLoggedIn }) => {
       Password: password
     };
 
+    console.log("Login data sent to server:", data);
+
     fetch("https://movie-api-amy-d13640458d52.herokuapp.com/login", {
       method: "POST",
       headers: {
