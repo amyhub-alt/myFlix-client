@@ -75,8 +75,8 @@ export const MovieCard = ({ movie, user, setUser, displayButton=true }) => {
 
 MovieCard.propTypes = {
   movie: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    imagePath: PropTypes.string.isRequired,
-    director: PropTypes.string.isRequired,
+    title: PropTypes.string
   }).isRequired,
+    imagePath: PropTypes.string.isRequired,
+    director: PropTypes.string.isRequired
 };

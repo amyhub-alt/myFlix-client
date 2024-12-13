@@ -9,12 +9,16 @@ import Col from 'react-bootstrap/Col';
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { MoviesList } from "../movie-list/movie-list";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
+import { setMovies } from "../../reducers/movies";
+import { useDispatch, useSelector } from "react-redux";
 import { ProfileView } from "../profile-view/profile-view";
 
 export const MainView = () => {
-  const [movies, setMovies] = useState([]);
+  // const [movies, setMovies] = useState([]);
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
+  const dispatch = useDispatch()
+  const movies = useSelector(state => state.movies.list);
 
 useEffect(() => {
   if (!localStorage.getItem('token')) {
@@ -36,7 +40,7 @@ useEffect(() => {
           genre: movie.Genre
         };
       });
-      setMovies(moviesFromApi);
+      dispatch(setMovies(moviesFromApi));
     })
     .catch((error) => {
       console.error("Error fetching movies:", error); // Log any potential errors
