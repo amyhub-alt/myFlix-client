@@ -3,3 +3,6 @@ node_modules
 .parcel-cache
 dist
 dist/index.2212206d.css.map
+
+# Local Netlify folder
+.netlify
