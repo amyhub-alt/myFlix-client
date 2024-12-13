@@ -10,12 +10,14 @@ import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { MoviesList } from "../movie-list/movie-list";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
 import { setMovies } from "../../reducers/movies";
+import { useDispatch, useSelector } from "react-redux";
 
 export const MainView = () => {
   // const [movies, setMovies] = useState([]);
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
-  const dispatcher = useDispatch()
+  const dispatch = useDispatch()
+  const movies = useSelector(state => state.movies.list);
 
 useEffect(() => {
   if (!localStorage.getItem('token')) {
